@@ -10,11 +10,11 @@ const userRouter = require('./routes/user.routes')
 
 const app = express()
 
-app.use(cors({
-  credentials: true,
-  origin: ['http://p980114v.beget.tech/'],
-}))
-app.options('*', cors());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
