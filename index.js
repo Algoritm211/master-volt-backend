@@ -14,6 +14,7 @@ app.use(cors({
   credentials: true,
   origin: ['http://p980114v.beget.tech/'],
 }))
+app.options('*', cors());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
