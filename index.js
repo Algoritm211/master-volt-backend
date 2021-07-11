@@ -3,18 +3,20 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const consola = require('consola')
 const dotenv = require('dotenv')
+const bodyParser = require('body-parser');
 dotenv.config()
-
+const PORT = process.env.PORT || 5000
 const userRouter = require('./routes/user.routes')
 
 const app = express()
 
 app.use(cors())
-app.use(express.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 app.use('/api/user/', userRouter)
-
-const PORT = process.env.PORT || 5000
 
 const start = async () => {
   try {

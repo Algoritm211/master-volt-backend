@@ -7,6 +7,7 @@ const consola = require('consola')
 class UserController {
   async writeUserDataToDB(req, res) {
     try {
+
       const { name, email, phone, message } = req.body
       const newUser = new User({
         name, email, phone, message
